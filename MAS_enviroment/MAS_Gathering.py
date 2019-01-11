@@ -4,6 +4,7 @@
 
 import numpy as np
 import scipy.misc
+import random
 
 
 class AgentObj:
@@ -140,7 +141,7 @@ class FoodObj:
 
 
 class GameEnv:
-    def __init__(self, widht=31, hight=11, agent_hidden=5, food_hidden=4):
+    def __init__(self, widht=31, hight=31, agent_hidden=5, food_hidden=4):
         self.size_x = widht
         self.size_y = hight
         self.objects = []
@@ -165,12 +166,16 @@ class GameEnv:
 
         self.food_objects = []
 
-        for x in range(13, 18):
-            delta = x - 13 if x -13 < 17 - x else 17 -x
-            self.food_objects.append(FoodObj(coordinates=(x, 5)))
-            for i in range(delta):
-                self.food_objects.append(FoodObj(coordinates=(x, 4 - i)))
-                self.food_objects.append(FoodObj(coordinates=(x, 6 + i)))
+        def appendfood(widht, hight, nr_of_points):
+            return [divmod(i, hight) for i in random.sample(range(widht * hight), nr_of_points)]
+
+        for x in appendfood(31,31,300):
+        #for x in range(5,6):
+            #delta = x - 13 if x -13 < 17 - x else 17 -x
+            self.food_objects.append(FoodObj(x))
+            #for i in range(2,10):
+             #   self.food_objects.append(FoodObj(coordinates=(x, 4 - i)))
+              #  self.food_objects.append(FoodObj(coordinates=(x, 6 + i)))
 
     def move(self, agent1_action, agent2_action):
         assert agent1_action in range(8), 'agent1 take wrong action'
