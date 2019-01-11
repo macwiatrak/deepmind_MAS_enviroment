@@ -173,9 +173,6 @@ class GameEnv:
         #for x in range(5,6):
             #delta = x - 13 if x -13 < 17 - x else 17 -x
             self.food_objects.append(FoodObj(x))
-            #for i in range(2,10):
-             #   self.food_objects.append(FoodObj(coordinates=(x, 4 - i)))
-              #  self.food_objects.append(FoodObj(coordinates=(x, 6 + i)))
 
     def move(self, agent1_action, agent2_action):
         assert agent1_action in range(8), 'agent1 take wrong action'
