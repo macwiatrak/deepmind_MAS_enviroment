@@ -170,8 +170,6 @@ class GameEnv:
             return [divmod(i, hight) for i in random.sample(range(widht * hight), nr_of_points)]
 
         for x in appendfood(31,31,300):
-        #for x in range(5,6):
-            #delta = x - 13 if x -13 < 17 - x else 17 -x
             self.food_objects.append(FoodObj(x))
 
     def move(self, agent1_action, agent2_action):
